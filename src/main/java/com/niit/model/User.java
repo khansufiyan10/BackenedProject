@@ -39,7 +39,23 @@ public class User
 	@Pattern(regexp="(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@#_-]).{8,16}",message="Password is weak")
 	private String password;
 	
+	private boolean Enabled;
+	private String authority;
 	
+	
+	
+	public boolean isEnabled() {
+		return Enabled;
+	}
+	public void setEnabled(boolean enabled) {
+		Enabled = enabled;
+	}
+	public String getAuthority() {
+		return authority;
+	}
+	public void setAuthority(String authority) {
+		this.authority = authority;
+	}
 	//Has-a relation
 	//Class name and object
 	@Embedded
