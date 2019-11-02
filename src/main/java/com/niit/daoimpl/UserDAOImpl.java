@@ -9,6 +9,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.niit.dao.UserDAO;
@@ -25,6 +26,8 @@ public class UserDAOImpl implements UserDAO
 
 	public boolean addUser(User user) 
 	{
+      user.setEnabled(true);
+      user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
 		sessionFactory.getCurrentSession().save(user);
 		return true;
 		

@@ -44,6 +44,7 @@ public class User
 	
 	
 	
+	
 	public boolean isEnabled() {
 		return Enabled;
 	}
