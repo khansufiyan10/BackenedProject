@@ -16,9 +16,9 @@ import com.niit.model.Order;
 @Transactional
 public class OrderDAOImpl implements OrderDAO
 {
-
-	SessionFactory sessionFactory;
 	@Autowired
+	SessionFactory sessionFactory;
+
 	public void addOrder(Order order) 
 	{
 		

@@ -63,6 +63,11 @@ public class SpringTest
 			System.out.println(e);
 		}
 	}
+	
+	
+	
+	
+
 	@Ignore
 	@Test
 	public void updateUserDetails() 

@@ -13,6 +13,9 @@ import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import com.niit.daoimpl.CartitemDAOImpl;
+import com.niit.daoimpl.OrderDAOImpl;
+import com.niit.daoimpl.ProductDAOImpl;
 import com.niit.daoimpl.UserDAOImpl;
 
 
@@ -65,5 +68,26 @@ public class AppConfig
 	    public UserDAOImpl getUserDAO()
 	    {
 	    	return new UserDAOImpl();
+	    }
+
+	    @Bean(name="orderDAO")
+	    @Autowired
+	    public OrderDAOImpl getOrderDAO()
+	    {
+	    	return new OrderDAOImpl();
+	    }
+	    
+	    @Bean(name="productDAO")
+	    @Autowired
+	    public ProductDAOImpl getProductDAO()
+	    {
+	    	return new ProductDAOImpl();
+	    }
+	    
+	    @Bean(name="cartDAO")
+	    @Autowired
+	    public CartitemDAOImpl getCartDAO()
+	    {
+	    	return new CartitemDAOImpl();
 	    }
 }

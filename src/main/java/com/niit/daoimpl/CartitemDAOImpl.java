@@ -14,8 +14,9 @@ import com.niit.model.CartItem;
 @Transactional
 public class CartitemDAOImpl implements CartItemDAO
 {
-	SessionFactory sessionFactory;
 	@Autowired
+	SessionFactory sessionFactory;
+	
 
 	public void addCart(CartItem cart) 
 	{

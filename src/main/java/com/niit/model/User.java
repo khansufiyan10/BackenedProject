@@ -36,7 +36,7 @@ public class User
 	@Pattern(regexp="^\\d{10}$",message="Mobile number is invalid")
 	private String mobile;
 	
-	@Pattern(regexp="(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@#_-]).{8,16}",message="Password is weak")
+	//@Pattern(regexp="(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@#_-]).{8,16}",message="Password is weak")
 	private String password;
 	
 	private boolean Enabled;

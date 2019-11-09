@@ -18,11 +18,12 @@ import com.niit.model.User;
 @Transactional
 public class ProductDAOImpl implements ProductDAO
 {
-
-	SessionFactory sessionFactory;
 	@Autowired
+	SessionFactory sessionFactory;
+	
 	public void addProduct(Product product)
 	{
+		product.setStatus("A");
 		sessionFactory.getCurrentSession().save(product);	
 	}
 
@@ -63,7 +64,7 @@ public class ProductDAOImpl implements ProductDAO
 			//positional arguments:- ?
 			//named      arguments:- :anyname
 			
-			Query query=DBConfig.getSession().createQuery("from com.niit.model.Product where productid= :productid");
+			Query query=sessionFactory.getCurrentSession().createQuery("from com.niit.model.Product where productid= :productid");
 			query.setParameter("productid",product.getProductid());
 			return(Product)query.getResultList().get(0);
 
@@ -84,7 +85,7 @@ public class ProductDAOImpl implements ProductDAO
 			//positional arguments:- ?
 			//named      arguments:- :anyname
 			
-			Query query=DBConfig.getSession().createQuery("from com.niit.model.Product where productname= :productname");
+			Query query=sessionFactory.getCurrentSession().createQuery("from com.niit.model.Product where productname= :productname");
 			query.setParameter("productname",product.getProductname());
 			return(Product)query.getResultList().get(0);
 	}

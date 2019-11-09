@@ -26,8 +26,9 @@ public class UserDAOImpl implements UserDAO
 
 	public boolean addUser(User user) 
 	{
-      user.setEnabled(true);
-      user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
+		user.setAuthority("user");
+		user.setEnabled(true);
+		user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
 		sessionFactory.getCurrentSession().save(user);
 		return true;
 		
@@ -71,7 +72,7 @@ public class UserDAOImpl implements UserDAO
 			//positional arguments:- ?
 			//named      arguments:- :anyname
 			
-			Query query=DBConfig.getSession().createQuery("from com.niit.model.User where userid= :userid");
+			Query query=sessionFactory.getCurrentSession().createQuery("from com.niit.model.User where userid= :userid");
 			query.setParameter("userid",user.getUserid());
 			return(User)query.getResultList().get(0);
 		}
@@ -89,8 +90,15 @@ public class UserDAOImpl implements UserDAO
 		try 
 		{
 			
-			Criteria ctx=DBConfig.getSession().createCriteria(User.class);
-			return(User)ctx.add(Restrictions.eq("username",user.getUsername())).list().get(0);
+			System.out.println("inside method............");
+			Query query=sessionFactory.getCurrentSession().createQuery("from com.niit.model.User where username= :username");
+			query.setParameter("username",user.getUsername());
+			User u=(User)query.getResultList().get(0);
+			System.out.println("inside method................................");
+			System.out.println(u.getUsername());
+			System.out.println(u.getAuthority());
+			System.out.println(u.isEnabled());
+			return u;
 		}
 
 		catch (Exception e)
