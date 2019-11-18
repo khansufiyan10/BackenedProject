@@ -18,7 +18,7 @@ import com.niit.daoimpl.OrderDAOImpl;
 import com.niit.daoimpl.ProductDAOImpl;
 import com.niit.daoimpl.UserDAOImpl;
 
-
+//MyComment
 @Configuration
 @ComponentScan(basePackages="com.niit")
 @EnableTransactionManagement
@@ -37,13 +37,13 @@ public class AppConfig
 	}
 	
 	  private Properties getHibernateProperties() {
-	    	Properties properties = new Properties();						
+	    	Properties properties = new Properties();
 	    	properties.put("hibernate.show_sql", "true");
 	    	properties.put("hibernate.hbm2ddl.auto", "update");
 	    	properties.put("hibernate.dialect", "org.hibernate.dialect.H2Dialect");
 	    	return properties;
 	    }
-	    
+	 
 	   @Bean (name = "sessionFactory")
 	   @Autowired
 	   public LocalSessionFactoryBean getSessionFactory() 
@@ -55,21 +55,23 @@ public class AppConfig
 	      return sessionFactory;
 	   }
 	   
-	   @Bean(name="transcatonManager")
-	   @Autowired
-	   public HibernateTransactionManager getTransactionManager(SessionFactory sessionFactory)
-	   {
-		   HibernateTransactionManager transactionManager=new HibernateTransactionManager(sessionFactory);
-		   return transactionManager;
-	   }
-	   
+	    @Bean(name = "transactionManager")
+			@Autowired
+			public HibernateTransactionManager getTransactionManager(
+					SessionFactory sessionFactory) {
+				HibernateTransactionManager transactionManager = new HibernateTransactionManager(
+						sessionFactory);
+
+				return transactionManager;
+			}
+	    
 	    @Bean(name="userDAO")
 	    @Autowired
 	    public UserDAOImpl getUserDAO()
 	    {
 	    	return new UserDAOImpl();
 	    }
-
+	    
 	    @Bean(name="orderDAO")
 	    @Autowired
 	    public OrderDAOImpl getOrderDAO()

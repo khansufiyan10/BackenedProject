@@ -9,8 +9,10 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.springframework.stereotype.Repository;
+
 @Entity
-@Table(name="Cartitems")
+@Table(name="CartItems")
 public class CartItem
 {
 	@Id
@@ -25,10 +27,7 @@ public class CartItem
 	
 	@ManyToOne(fetch=FetchType.EAGER)
 	private Product product;
-	
-	
-	
-	
+
 	public User getUser() {
 		return user;
 	}
@@ -45,6 +44,8 @@ public class CartItem
 		this.product = product;
 	}
 
+	
+
 	public int getCartitemid() {
 		return cartitemid;
 	}
@@ -53,8 +54,6 @@ public class CartItem
 		this.cartitemid = cartitemid;
 	}
 
-	
-	
 	public int getQuantity()
 	{
 		return quantity;
