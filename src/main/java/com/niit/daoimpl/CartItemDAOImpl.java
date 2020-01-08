@@ -16,7 +16,7 @@ import com.niit.model.User;
 @Transactional
 @Repository("cartDAO")
 
-public class CartitemDAOImpl implements CartItemDAO 
+public class CartItemDAOImpl implements CartItemDAO 
 {
 	@Autowired
 	SessionFactory sessionFactory;
@@ -65,6 +65,8 @@ public class CartitemDAOImpl implements CartItemDAO
 		{
 			return null;
 		}
-	}
+		
 
 	}
+
+}

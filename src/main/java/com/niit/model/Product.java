@@ -1,6 +1,7 @@
 package com.niit.model;
 
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -11,8 +12,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-
 import javax.persistence.Table;
+import javax.persistence.Transient;
+
+import org.springframework.stereotype.Repository;
 
 @Entity
 @Table(name="Products")
@@ -28,18 +31,24 @@ public class Product
 	private float price;
 	private int quantity;
 	private String status;
+	@Transient
+	private String imageurl;
+	
+	
+	public String getImageurl() {
+		return imageurl;
+	}
+	public void setImageurl(String imageurl) {
+		this.imageurl = imageurl;
+	}
+	@OneToMany(fetch=FetchType.EAGER)
+	private Set<Order> orders;
 	
 	@OneToMany(fetch=FetchType.EAGER)
-	private List<Order>orders;
-	
-	@OneToMany(fetch=FetchType.EAGER)
-	private List<CartItem>cartitems;
-	
+	private Set<CartItem> cartitems;
 	
 	@ManyToOne(cascade=CascadeType.ALL)
-	
 	private Category category;
-	
 	
 	public Category getCategory() {
 		return category;
@@ -47,16 +56,17 @@ public class Product
 	public void setCategory(Category category) {
 		this.category = category;
 	}
-	public List<Order> getOrders() {
+
+	public Set<Order> getOrders() {
 		return orders;
 	}
-	public void setOrders(List<Order> orders) {
+	public void setOrders(Set<Order> orders) {
 		this.orders = orders;
 	}
-	public List<CartItem> getCartitems() {
+	public Set<CartItem> getCartitems() {
 		return cartitems;
 	}
-	public void setCartitems(List<CartItem> cartitems) {
+	public void setCartitems(Set<CartItem> cartitems) {
 		this.cartitems = cartitems;
 	}
 	public String getStatus() {

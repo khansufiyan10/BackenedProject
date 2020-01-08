@@ -6,7 +6,7 @@
 <hibernate-configuration>
     <session-factory>
         <property name="hibernate.connection.driver_class">org.h2.Driver</property>
-        <property name="hibernate.connection.url">jdbc:h2:~/test2</property>
+        <property name="hibernate.connection.url">jdbc:h2:tcp://localhost/~/test2</property>
         <property name="hibernate.connection.username">sa</property>
         <property name="hibernate.connection.password">faculty</property>
         <property name="hibernate.connection.pool_size">1</property>
